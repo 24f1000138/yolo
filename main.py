@@ -6,7 +6,9 @@ from yolo1 import detect_and_track
 import io
 
 app = FastAPI()
-
+@app.get("/")
+def read_root():
+    return {"message": "Hello, Render is working!"}
 @app.post("/track/")
 async def track_image(file: UploadFile = File(...)):
     contents = await file.read()
